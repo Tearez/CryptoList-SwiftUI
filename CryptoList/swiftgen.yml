@@ -62,5 +62,5 @@ xcassets:
   inputs:
     - ${PROJECT_DIR}/${TARGET_NAME}/Resources/Images.xcassets
   outputs:
-    - templateName: swift5
-      output: ${PROJECT_DIR}/${TARGET_NAME}/Generated/Assets.swift
+    - templatePath: ${PROJECT_DIR}/SwiftGenTemplate/assets.stencil
+      output: ${PROJECT_DIR}/${TARGET_NAME}/SwiftGenOutput/Assets.swift
