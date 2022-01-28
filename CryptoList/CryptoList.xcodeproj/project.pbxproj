@@ -19,6 +19,7 @@
 		D893D25627A43F4E0005B8D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D893D25827A43F500005B8D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D893D25B27A43F500005B8D9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D893D26227A4420E0005B8D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +52,7 @@
 		D893D25327A43F4E0005B8D9 /* CryptoList */ = {
 			isa = PBXGroup;
 			children = (
+				D893D26227A4420E0005B8D9 /* Info.plist */,
 				D893D25427A43F4E0005B8D9 /* CryptoListApp.swift */,
 				D893D25627A43F4E0005B8D9 /* ContentView.swift */,
 				D893D25827A43F500005B8D9 /* Assets.xcassets */,
@@ -272,6 +274,7 @@
 				DEVELOPMENT_TEAM = 3PW59QH5QD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CryptoList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -301,6 +304,7 @@
 				DEVELOPMENT_TEAM = 3PW59QH5QD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CryptoList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
