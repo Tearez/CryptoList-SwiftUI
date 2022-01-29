@@ -70,3 +70,8 @@ xcassets:
   outputs:
     - templatePath: ${PROJECT_DIR}/SwiftGenTemplate/colors.stencil
       output: ${PROJECT_DIR}/${TARGET_NAME}/SwiftGenOutput/Colors.swift
+#strings:
+#inputs: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Strings/
+#outputs:
+#- templateName: structured-swift5
+#	output: ${PROJECT_DIR}/${TARGET_NAME}/SwiftGenOutput/Strings.swift

@@ -16,6 +16,7 @@
 		D8A430DF27A457A400C23C4E /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A430DE27A457A400C23C4E /* Assets.swift */; };
 		D8BC0A5927A582820081B599 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BC0A5827A582820081B599 /* Colors.xcassets */; };
 		D8BC0A5D27A58CDB0081B599 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC0A5C27A58CDB0081B599 /* Colors.swift */; };
+		D8BC0A6127A58FCC0081B599 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8BC0A6327A58FCC0081B599 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		D8A430DE27A457A400C23C4E /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Assets.swift; path = CryptoList/SwiftGenOutput/Assets.swift; sourceTree = SOURCE_ROOT; };
 		D8BC0A5827A582820081B599 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		D8BC0A5C27A58CDB0081B599 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = CryptoList/SwiftGenOutput/Colors.swift; sourceTree = SOURCE_ROOT; };
+		D8BC0A6227A58FCC0081B599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D8BC0A6427A590210081B599 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FD62E7B417E695D060AD7553 /* Pods_CryptoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -106,6 +109,7 @@
 		D893D26427A44BB70005B8D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D8BC0A5E27A58EEC0081B599 /* Strings */,
 				D893D26527A44BD20005B8D9 /* Images.xcassets */,
 				D8BC0A5827A582820081B599 /* Colors.xcassets */,
 			);
@@ -119,6 +123,14 @@
 				D8A430DE27A457A400C23C4E /* Assets.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		D8BC0A5E27A58EEC0081B599 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				D8BC0A6327A58FCC0081B599 /* Localizable.strings */,
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +177,7 @@
 			knownRegions = (
 				en,
 				Base,
+				bg,
 			);
 			mainGroup = D893D24827A43F4E0005B8D9;
 			productRefGroup = D893D25227A43F4E0005B8D9 /* Products */;
@@ -181,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8BC0A6127A58FCC0081B599 /* Localizable.strings in Resources */,
 				D893D26627A44BD20005B8D9 /* Images.xcassets in Resources */,
 				D8BC0A5927A582820081B599 /* Colors.xcassets in Resources */,
 				D893D25C27A43F500005B8D9 /* Preview Assets.xcassets in Resources */,
@@ -247,11 +261,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		D8BC0A6327A58FCC0081B599 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8BC0A6227A58FCC0081B599 /* en */,
+				D8BC0A6427A590210081B599 /* bg */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		D893D25D27A43F500005B8D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -313,6 +340,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

@@ -12,7 +12,7 @@ public final class ColorAsset {
 
 	public private(set) lazy var uiColor: UIColor = {
 		guard let color = UIColor(asset: self) else {
-		fatalError("Unable to load color asset named \(name).")
+			fatalError("Unable to load color asset named \(name).")
 		}
 		return color
 	}()
