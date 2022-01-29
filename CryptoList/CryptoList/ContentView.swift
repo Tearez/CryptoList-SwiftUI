@@ -12,6 +12,7 @@ struct ContentView: View {
 		VStack {
 			Text("Hello, world!")
 				.padding()
+				.foregroundColor(Colors.primary.uiColor.color)
 			Image(uiImage: Assets.cryptolistLogo.image)
 				.resizable()
 				.scaledToFill()
