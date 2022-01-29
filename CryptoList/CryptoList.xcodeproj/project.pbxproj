@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		706B890446CA3257D33470D6 /* Pods_CryptoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62E7B417E695D060AD7553 /* Pods_CryptoList.framework */; };
+		D85F9F1C27A59508002733AD /* BaseNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85F9F1B27A59508002733AD /* BaseNetworkClient.swift */; };
+		D85F9F1E27A5984D002733AD /* WebError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85F9F1D27A5984D002733AD /* WebError.swift */; };
+		D85F9F2127A5999C002733AD /* CryptoWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85F9F2027A5999C002733AD /* CryptoWebService.swift */; };
+		D85F9F2427A59B31002733AD /* GetAllCurrenciesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85F9F2327A59B31002733AD /* GetAllCurrenciesResponse.swift */; };
 		D893D25527A43F4E0005B8D9 /* CryptoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D893D25427A43F4E0005B8D9 /* CryptoListApp.swift */; };
 		D893D25727A43F4E0005B8D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D893D25627A43F4E0005B8D9 /* ContentView.swift */; };
 		D893D25927A43F500005B8D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D893D25827A43F500005B8D9 /* Assets.xcassets */; };
@@ -22,6 +26,10 @@
 /* Begin PBXFileReference section */
 		651FEB5788BE819FFC0BF246 /* Pods-CryptoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoList.debug.xcconfig"; path = "Target Support Files/Pods-CryptoList/Pods-CryptoList.debug.xcconfig"; sourceTree = "<group>"; };
 		D3D84822ACEABCA461D81C53 /* Pods-CryptoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CryptoList.release.xcconfig"; path = "Target Support Files/Pods-CryptoList/Pods-CryptoList.release.xcconfig"; sourceTree = "<group>"; };
+		D85F9F1B27A59508002733AD /* BaseNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkClient.swift; sourceTree = "<group>"; };
+		D85F9F1D27A5984D002733AD /* WebError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebError.swift; sourceTree = "<group>"; };
+		D85F9F2027A5999C002733AD /* CryptoWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoWebService.swift; sourceTree = "<group>"; };
+		D85F9F2327A59B31002733AD /* GetAllCurrenciesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllCurrenciesResponse.swift; sourceTree = "<group>"; };
 		D893D25127A43F4E0005B8D9 /* CryptoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D893D25427A43F4E0005B8D9 /* CryptoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListApp.swift; sourceTree = "<group>"; };
 		D893D25627A43F4E0005B8D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +74,33 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D85F9F1A27A594DF002733AD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D85F9F1F27A5995E002733AD /* Crypto */,
+				D85F9F1B27A59508002733AD /* BaseNetworkClient.swift */,
+				D85F9F1D27A5984D002733AD /* WebError.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D85F9F1F27A5995E002733AD /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				D85F9F2227A59B03002733AD /* Response */,
+				D85F9F2027A5999C002733AD /* CryptoWebService.swift */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
+		D85F9F2227A59B03002733AD /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				D85F9F2327A59B31002733AD /* GetAllCurrenciesResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		D893D24827A43F4E0005B8D9 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +122,7 @@
 		D893D25327A43F4E0005B8D9 /* CryptoList */ = {
 			isa = PBXGroup;
 			children = (
+				D85F9F1A27A594DF002733AD /* Services */,
 				D8A430DD27A4570C00C23C4E /* Generated */,
 				D893D26427A44BB70005B8D9 /* Resources */,
 				D893D26227A4420E0005B8D9 /* Info.plist */,
@@ -273,6 +309,10 @@
 				D893D25727A43F4E0005B8D9 /* ContentView.swift in Sources */,
 				D8BC0A5D27A58CDB0081B599 /* Colors.swift in Sources */,
 				D893D25527A43F4E0005B8D9 /* CryptoListApp.swift in Sources */,
+				D85F9F1E27A5984D002733AD /* WebError.swift in Sources */,
+				D85F9F2427A59B31002733AD /* GetAllCurrenciesResponse.swift in Sources */,
+				D85F9F2127A5999C002733AD /* CryptoWebService.swift in Sources */,
+				D85F9F1C27A59508002733AD /* BaseNetworkClient.swift in Sources */,
 				D8A430DF27A457A400C23C4E /* Assets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

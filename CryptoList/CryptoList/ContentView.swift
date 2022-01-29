@@ -6,8 +6,30 @@
 //
 
 import SwiftUI
+import Combine
+
+class ViewModel: ObservableObject {
+	let service = CryptoWebService()
+	var cancelables = Set<AnyCancellable>()
+
+	func getAll() {
+		service
+			.getAllCoins()
+			.receive(on: DispatchQueue.main)
+			.sink(receiveCompletion: { _ in
+				print("")
+			},
+				  receiveValue: {
+				response in
+				print(response)
+			})
+			.store(in: &cancelables)
+	}
+}
 
 struct ContentView: View {
+	let vm = ViewModel()
+
     var body: some View {
 		VStack {
 			Text("Hello, world!")
@@ -17,6 +39,9 @@ struct ContentView: View {
 				.resizable()
 				.scaledToFill()
 				.frame(width: 100, height: 100)
+		}
+		.onAppear {
+			vm.getAll()
 		}
     }
 }
