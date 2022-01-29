@@ -1,109 +1,91 @@
 // swiftlint:disable all
 {% if catalogs %}
-{% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
+{% set enumName %}{{param.enumName|default:"Assets"}}{% endset %}
 {% set arResourceGroupType %}{{param.arResourceGroupTypeName|default:"ARResourceGroupAsset"}}{% endset %}
 {% set colorType %}{{param.colorTypeName|default:"ColorAsset"}}{% endset %}
 {% set dataType %}{{param.dataTypeName|default:"DataAsset"}}{% endset %}
 {% set imageType %}{{param.imageTypeName|default:"ImageAsset"}}{% endset %}
 {% set symbolType %}{{param.symbolTypeName|default:"SymbolAsset"}}{% endset %}
 {% set forceNamespaces %}{{param.forceProvidesNamespaces|default:"false"}}{% endset %}
-{% set accessModifier %}{% if param.publicAccess %}public{% else %}internal{% endif %}{% endset %}
+{% set accessModifier %}public{% endset %}
 import UIKit
-
-// swiftlint:disable superfluous_disable_command file_length implicit_return
 
 // MARK: - Asset Catalogs
 
 {% macro enumBlock assets %}
-  {% call casesBlock assets %}
-  {% if param.allValues %}
+	{% call casesBlock assets %}
+	{% if param.allValues %}
 
-  // swiftlint:disable trailing_comma
-  {% if resourceCount.image > 0 %}
-  {{accessModifier}} static let allImages: [{{imageType}}] = [
-    {% filter indent:2 %}{% call allValuesBlock assets "image" "" %}{% endfilter %}
-  ]
-  {% endif %}
-  // swiftlint:enable trailing_comma
-  {% endif %}
+	{% if resourceCount.image > 0 %}
+	{{accessModifier}} static let allImages: [{{imageType}}] = [
+		{% filter indent:8 %}{% call allValuesBlock assets "image" "" %}{% endfilter %}
+	]
+	{% endif %}
+	{% endif %}
 {% endmacro %}
 {% macro casesBlock assets %}
-  {% for asset in assets %}
-  {% if asset.type == "image" %}
-  {{accessModifier}} static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = {{imageType}}(name: "{{asset.value}}")
-  {% elif asset.items and ( forceNamespaces == "true" or asset.isNamespaced == "true" ) %}
-  {{accessModifier}} enum {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
-    {% filter indent:2 %}{% call casesBlock asset.items %}{% endfilter %}
-  }
-  {% elif asset.items %}
-  {% call casesBlock asset.items %}
-  {% endif %}
-  {% endfor %}
+	{% for asset in assets %}
+	{% if asset.type == "image" %}
+	{{accessModifier}} static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = {{imageType}}(name: "{{asset.value}}")
+	{% elif asset.items and ( forceNamespaces == "true" or asset.isNamespaced == "true" ) %}
+	{{accessModifier}} enum {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
+		{% filter indent:8 %}{% call casesBlock asset.items %}{% endfilter %}
+	}
+	{% elif asset.items %}
+	{% call casesBlock asset.items %}
+	{% endif %}
+	{% endfor %}
 {% endmacro %}
 {% macro allValuesBlock assets filter prefix %}
-  {% for asset in assets %}
-  {% if asset.type == filter %}
-  {{prefix}}{{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}},
-  {% elif asset.items and ( forceNamespaces == "true" or asset.isNamespaced == "true" ) %}
-  {% set prefix2 %}{{prefix}}{{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}.{% endset %}
-  {% call allValuesBlock asset.items filter prefix2 %}
-  {% elif asset.items %}
-  {% call allValuesBlock asset.items filter prefix %}
-  {% endif %}
-  {% endfor %}
+	{% for asset in assets %}
+	{% if asset.type == filter %}
+	{{prefix}}{{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}},
+	{% elif asset.items and ( forceNamespaces == "true" or asset.isNamespaced == "true" ) %}
+	{% set prefix8 %}{{prefix}}{{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}.{% endset %}
+	{% call allValuesBlock asset.items filter prefix8 %}
+	{% elif asset.items %}
+	{% call allValuesBlock asset.items filter prefix %}
+	{% endif %}
+	{% endfor %}
 {% endmacro %}
-// swiftlint:disable identifier_name line_length nesting type_body_length type_name
 {{accessModifier}} enum {{enumName}} {
-  {% if catalogs.count > 1 or param.forceFileNameEnum %}
-  {% for catalog in catalogs %}
-  {{accessModifier}} enum {{catalog.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
-    {% filter indent:2 %}{% call enumBlock catalog.assets %}{% endfilter %}
-  }
-  {% endfor %}
-  {% else %}
-  {% call enumBlock catalogs.first.assets %}
-  {% endif %}
+	{% if catalogs.count > 1 or param.forceFileNameEnum %}
+	{% for catalog in catalogs %}
+	{{accessModifier}} enum {{catalog.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
+	{% filter indent:8 %}{% call enumBlock catalog.assets %}{% endfilter %}
+	}
+	{% endfor %}
+	{% else %}
+	{% call enumBlock catalogs.first.assets %}
+	{% endif %}
 }
-// swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 {% if resourceCount.image > 0 %}
-
 {{accessModifier}} struct {{imageType}} {
-  {{accessModifier}} fileprivate(set) var name: String
+	fileprivate(set) var name: String
 
-  {{accessModifier}} typealias Image = UIImage
-
-  {{accessModifier}} var image: Image {
-    let bundle = {{param.bundle|default:"BundleToken.bundle"}}
-    let image = Image(named: name, in: bundle, compatibleWith: nil)
-    guard let result = image else {
-      fatalError("Unable to load image asset named \(name).")
-    }
-    return result
-  }
-}
-
-{{accessModifier}} extension {{imageType}}.Image {
-  convenience init?(asset: {{imageType}}) {
-    let bundle = {{param.bundle|default:"BundleToken.bundle"}}
-    self.init(named: asset.name, in: bundle, compatibleWith: nil)
-  }
+	{{accessModifier}} var image: UIImage {
+		let bundle = {{param.bundle|default:"BundleToken.bundle"}}
+		let image = UIImage(named: name, in: bundle, compatibleWith: nil)
+		guard let result = image else {
+			fatalError("Unable to load image asset named \(name).")
+		}
+		return result
+	}
 }
 {% endif %}
-
 {% if not param.bundle %}
 
-// swiftlint:disable convenience_type
 private final class BundleToken {
-  static let bundle: Bundle = {
-    #if SWIFT_PACKAGE
-    return Bundle.module
-    #else
-    return Bundle(for: BundleToken.self)
-    #endif
-  }()
+	static let bundle: Bundle = {
+		#if SWIFT_PACKAGE
+		return Bundle.module
+		#else
+		return Bundle(for: BundleToken.self)
+		#endif
+	}()
 }
-// swiftlint:enable convenience_type
+// swiftlint:enable all
 {% endif %}
 {% else %}
 // No assets found
