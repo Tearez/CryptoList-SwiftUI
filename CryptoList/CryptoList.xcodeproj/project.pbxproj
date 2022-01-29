@@ -14,6 +14,7 @@
 		D893D25C27A43F500005B8D9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D893D25B27A43F500005B8D9 /* Preview Assets.xcassets */; };
 		D893D26627A44BD20005B8D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D893D26527A44BD20005B8D9 /* Images.xcassets */; };
 		D8A430DF27A457A400C23C4E /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A430DE27A457A400C23C4E /* Assets.swift */; };
+		D8BC0A5927A582820081B599 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BC0A5827A582820081B599 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		D893D26227A4420E0005B8D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D893D26527A44BD20005B8D9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D8A430DE27A457A400C23C4E /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Assets.swift; path = CryptoList/SwiftGenOutput/Assets.swift; sourceTree = SOURCE_ROOT; };
+		D8BC0A5827A582820081B599 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		FD62E7B417E695D060AD7553 /* Pods_CryptoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CryptoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				D893D26527A44BD20005B8D9 /* Images.xcassets */,
+				D8BC0A5827A582820081B599 /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D893D26627A44BD20005B8D9 /* Images.xcassets in Resources */,
+				D8BC0A5927A582820081B599 /* Colors.xcassets in Resources */,
 				D893D25C27A43F500005B8D9 /* Preview Assets.xcassets in Resources */,
 				D893D25927A43F500005B8D9 /* Assets.xcassets in Resources */,
 			);
