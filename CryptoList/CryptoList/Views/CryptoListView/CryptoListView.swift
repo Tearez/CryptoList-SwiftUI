@@ -23,6 +23,7 @@ struct CryptoListView: View {
 		.onAppear {
 			viewModel.getAll()
 		}
+		.background(Colors.background.uiColor.color)
     }
 }
 
