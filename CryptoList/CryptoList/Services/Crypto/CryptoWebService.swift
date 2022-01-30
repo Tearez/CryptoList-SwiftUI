@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import Alamofire
+
 protocol CryptoWebServiceProtocol {
 	func getAllCoins() -> AnyPublisher<[CryptoCurrency], Error>
 }

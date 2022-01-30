@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct CryptoListApp: App {
+	private let viewModelFactory = ViewModelFactory()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			CryptoListView(viewModel: viewModelFactory.buildCryptoListViewModel())
+				.environmentObject(viewModelFactory)
         }
     }
 }
