@@ -13,9 +13,20 @@ class CryptoListViewModel: ObservableObject {
 	private var cancelables = Set<AnyCancellable>()
 
 	@Published private(set) var cryptoCurrencies: [CryptoCurrency] = []
+	@Published var isNavigationLinkActive: Bool = false
+	@Published private(set) var selectedCrypto: String = "" {
+		didSet {
+			isNavigationLinkActive = !selectedCrypto.isEmpty
+		}
+	}
 
 	init(service: CryptoWebServiceProtocol) {
 		self.service = service
+	}
+
+	func resetView() {
+		selectedCrypto = ""
+		cryptoCurrencies = []
 	}
 
 	func getAll() {
@@ -27,5 +38,9 @@ class CryptoListViewModel: ObservableObject {
 				self?.cryptoCurrencies = response
 			})
 			.store(in: &cancelables)
+	}
+
+	func didTapCrypto(with id: String) {
+		selectedCrypto = id
 	}
 }

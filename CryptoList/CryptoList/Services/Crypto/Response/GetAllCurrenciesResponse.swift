@@ -11,7 +11,7 @@ struct GetAllCurrenciesResponse: Decodable {
 	let currencies: [CryptoCurrency]
 }
 
-struct CryptoCurrency: Decodable, Hashable {
+struct CryptoCurrency: Decodable, Identifiable {
 	let id: String
 	let name: String
 	let symbol: String

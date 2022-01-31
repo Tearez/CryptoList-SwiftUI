@@ -21,6 +21,7 @@ struct CryptoListRowView: View {
 				.resizable()
 				.scaledToFit()
 				.frame(width: 48, height: 48, alignment: .center)
+				.cornerRadius(24)
 			VStack(alignment: .leading, spacing: 4) {
 				Text(crypto.name)
 					.font(.system(.headline))
