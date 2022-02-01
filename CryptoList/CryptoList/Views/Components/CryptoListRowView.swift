@@ -7,6 +7,30 @@
 
 import SwiftUI
 
+private struct CryptoTypeView: View {
+	private let type: CryptoType
+	init(type: CryptoType) {
+		self.type = type
+	}
+
+	var body: some View {
+		Image(uiImage: image)
+			.resizable()
+			.scaledToFill()
+			.frame(width: 36, height: 36, alignment: .center)
+			.cornerRadius(18)
+	}
+
+	private var image: UIImage {
+		switch type {
+			case .coin:
+				return Assets.cryptoTypeCoin.image
+			case .token:
+				return Assets.cryptoTypeToken.image
+		}
+	}
+}
+
 struct CryptoListRowView: View {
 	@State private var crypto: CryptoCurrency
 	private let action: () -> Void
@@ -33,7 +57,7 @@ struct CryptoListRowView: View {
 						.font(.system(.subheadline))
 				}
 				Spacer()
-				Text(crypto.type.rawValue)
+				CryptoTypeView(type: crypto.type)
 			}
 			.padding(6)
 			.background(Colors.background.uiColor.color)

@@ -4,6 +4,8 @@ import UIKit
 // MARK: - Asset Catalogs
 
 public enum Assets {
+	public static let cryptoTypeCoin = ImageAsset(name: "crypto_type_coin")
+	public static let cryptoTypeToken = ImageAsset(name: "crypto_type_token")
 	public static let cryptolistLogo = ImageAsset(name: "cryptolist_logo")
 }
 
