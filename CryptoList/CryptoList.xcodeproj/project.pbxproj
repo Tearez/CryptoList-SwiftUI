@@ -24,6 +24,7 @@
 		D8EB445427A830B8001A74C7 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB445327A830B8001A74C7 /* TestView.swift */; };
 		D8EB445927A9698F001A74C7 /* ConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB445827A9698F001A74C7 /* ConfigurationProvider.swift */; };
 		D8EB445C27A974E5001A74C7 /* ScaledButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB445B27A974E5001A74C7 /* ScaledButtonStyle.swift */; };
+		D8EB445F27A98855001A74C7 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB445E27A98855001A74C7 /* String+Localized.swift */; };
 		D8EC295527A690090021BD77 /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EC295427A690090021BD77 /* ViewModelFactory.swift */; };
 		D8EC295727A697750021BD77 /* CryptoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EC295627A697750021BD77 /* CryptoListViewModel.swift */; };
 		D8EC295A27A6A6690021BD77 /* CryptoListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EC295927A6A6690021BD77 /* CryptoListRowView.swift */; };
@@ -52,6 +53,7 @@
 		D8EB445627A9672F001A74C7 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		D8EB445827A9698F001A74C7 /* ConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationProvider.swift; sourceTree = "<group>"; };
 		D8EB445B27A974E5001A74C7 /* ScaledButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledButtonStyle.swift; sourceTree = "<group>"; };
+		D8EB445E27A98855001A74C7 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		D8EC295427A690090021BD77 /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 		D8EC295627A697750021BD77 /* CryptoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListViewModel.swift; sourceTree = "<group>"; };
 		D8EC295927A6A6690021BD77 /* CryptoListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListRowView.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		D893D25327A43F4E0005B8D9 /* CryptoList */ = {
 			isa = PBXGroup;
 			children = (
+				D8EB445D27A98846001A74C7 /* Extensions */,
 				D8EC295327A68FEC0021BD77 /* ViewModelFactory */,
 				D85F9F2527A68B26002733AD /* Views */,
 				D85F9F1A27A594DF002733AD /* Services */,
@@ -227,6 +230,14 @@
 				D8EB445B27A974E5001A74C7 /* ScaledButtonStyle.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		D8EB445D27A98846001A74C7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D8EB445E27A98855001A74C7 /* String+Localized.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D8EC295327A68FEC0021BD77 /* ViewModelFactory */ = {
@@ -391,6 +402,7 @@
 				D8EC295727A697750021BD77 /* CryptoListViewModel.swift in Sources */,
 				D85F9F2127A5999C002733AD /* CryptoWebService.swift in Sources */,
 				D8EB445927A9698F001A74C7 /* ConfigurationProvider.swift in Sources */,
+				D8EB445F27A98855001A74C7 /* String+Localized.swift in Sources */,
 				D8EC295527A690090021BD77 /* ViewModelFactory.swift in Sources */,
 				D85F9F1C27A59508002733AD /* BaseNetworkClient.swift in Sources */,
 				D8EB445C27A974E5001A74C7 /* ScaledButtonStyle.swift in Sources */,
