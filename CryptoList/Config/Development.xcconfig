@@ -9,3 +9,4 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 
 CRYPTOLIST_COINPAPRIKA_BASE_URL = https:/$()/api.coinpaprika.com/v1
+CRYPTOLIST_COINRANKING_BASE_URL = https:/$()/api.coinranking.com/v2

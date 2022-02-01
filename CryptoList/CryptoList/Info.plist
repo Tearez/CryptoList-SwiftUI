@@ -4,6 +4,8 @@
 <dict>
 	<key>CRYPTOLIST_COINPAPRIKA_BASE_URL</key>
 	<string>${CRYPTOLIST_COINPAPRIKA_BASE_URL}</string>
+	<key>CRYPTOLIST_COINRANKING_BASE_URL</key>
+	<string>${CRYPTOLIST_COINRANKING_BASE_URL}</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 </dict>

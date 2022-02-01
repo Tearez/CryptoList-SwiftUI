@@ -9,6 +9,7 @@ import Foundation
 
 protocol ConfigurationProviderProtocol {
 	var coinpaprikaBaseUrl: String { get }
+	var coinrankingBaseUrl: String { get }
 }
 
 final class ConfigurationProvider: ConfigurationProviderProtocol {
@@ -21,6 +22,10 @@ final class ConfigurationProvider: ConfigurationProviderProtocol {
 
 	var coinpaprikaBaseUrl: String {
 		return readProperty(for: "CRYPTOLIST_COINPAPRIKA_BASE_URL")
+	}
+
+	var coinrankingBaseUrl: String {
+		return readProperty(for: "CRYPTOLIST_COINRANKING_BASE_URL")
 	}
 
 	private func readProperty<T>(for key: String) -> T {
