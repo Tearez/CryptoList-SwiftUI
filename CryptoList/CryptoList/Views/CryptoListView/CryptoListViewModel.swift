@@ -12,7 +12,7 @@ class CryptoListViewModel: ObservableObject {
 	private let service: CryptoWebServiceProtocol
 	private var cancelables = Set<AnyCancellable>()
 
-	@Published private(set) var cryptoCurrencies: [CryptoCurrency] = []
+	@Published private(set) var cryptoCurrencies: [CryptoCurrencyModel] = []
 	@Published var isNavigationLinkActive: Bool = false
 	@Published private(set) var selectedCrypto: String = "" {
 		didSet {

@@ -25,10 +25,11 @@ final class ViewModelFactory: ObservableObject {
 			return ConfigurationProvider()
 		}
 		.inObjectScope(.container)
+
 		dependencyContainer.register(CryptoWebServiceProtocol.self) { resolver in
 			let configurationProvider = resolver.resolve(ConfigurationProviderProtocol.self)!
-			return CryptoWebService(configurationProvider: configurationProvider)
+			return CoinpaprikaWebService(configurationProvider: configurationProvider)
 		}
-		.inObjectScope(.container)
+		.inObjectScope(.transient)
 	}
 }

@@ -8,8 +8,8 @@
 import SwiftUI
 
 private struct CryptoTypeView: View {
-	private let type: CryptoType
-	init(type: CryptoType) {
+	private let type: CryptoType?
+	init(type: CryptoType?) {
 		self.type = type
 	}
 
@@ -23,6 +23,8 @@ private struct CryptoTypeView: View {
 
 	private var image: UIImage {
 		switch type {
+			case .none:
+				return UIImage()
 			case .coin:
 				return Assets.cryptoTypeCoin.image
 			case .token:
@@ -32,10 +34,10 @@ private struct CryptoTypeView: View {
 }
 
 struct CryptoListRowView: View {
-	@State private var crypto: CryptoCurrency
+	@State private var crypto: CryptoCurrencyModel
 	private let action: () -> Void
 
-	init(crypto: CryptoCurrency, action: @escaping () -> Void) {
+	init(crypto: CryptoCurrencyModel, action: @escaping () -> Void) {
 		self.crypto = crypto
 		self.action = action
 	}
@@ -69,10 +71,12 @@ struct CryptoListRowView: View {
 
 struct CryptoListRowView_Previews: PreviewProvider {
 	static var previews: some View {
-		CryptoListRowView(crypto: CryptoCurrency(id: "",
-												name: "Bitcoin",
-												symbol: "BTC",
-												 type: .coin),
+		CryptoListRowView(crypto: CryptoCurrencyModel(id: "",
+													  name: "Bitcoin",
+													  symbol: "BTC",
+													  price: nil,
+													  iconUrl: nil,
+													  type: .coin),
 						  action: {})
 	}
 }
