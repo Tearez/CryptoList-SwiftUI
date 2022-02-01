@@ -15,8 +15,18 @@ protocol CryptoWebServiceProtocol {
 
 final class CryptoWebService: CryptoWebServiceProtocol {
 	private let baseClient = BaseNetworkClient()
+	private let configurationProvider: ConfigurationProviderProtocol
+
+	init(configurationProvider: ConfigurationProviderProtocol) {
+		self.configurationProvider = configurationProvider
+	}
 
 	func getAllCoins() -> AnyPublisher<[CryptoCurrency], Error> {
-		return baseClient.request(url: "https://api.coinpaprika.com/v1/coins", method: .get)
+		let url = buildUrl(with: "/coins")
+		return baseClient.request(url: url, method: .get)
+	}
+
+	private func buildUrl(with path: String) -> String {
+		return configurationProvider.coinpaprikaBaseUrl + path
 	}
 }

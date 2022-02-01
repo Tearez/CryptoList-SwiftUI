@@ -22,6 +22,8 @@
 		D8BC0A5D27A58CDB0081B599 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC0A5C27A58CDB0081B599 /* Colors.swift */; };
 		D8BC0A6127A58FCC0081B599 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8BC0A6327A58FCC0081B599 /* Localizable.strings */; };
 		D8EB445427A830B8001A74C7 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB445327A830B8001A74C7 /* TestView.swift */; };
+		D8EB445927A9698F001A74C7 /* ConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB445827A9698F001A74C7 /* ConfigurationProvider.swift */; };
+		D8EB445C27A974E5001A74C7 /* ScaledButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB445B27A974E5001A74C7 /* ScaledButtonStyle.swift */; };
 		D8EC295527A690090021BD77 /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EC295427A690090021BD77 /* ViewModelFactory.swift */; };
 		D8EC295727A697750021BD77 /* CryptoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EC295627A697750021BD77 /* CryptoListViewModel.swift */; };
 		D8EC295A27A6A6690021BD77 /* CryptoListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EC295927A6A6690021BD77 /* CryptoListRowView.swift */; };
@@ -47,6 +49,9 @@
 		D8BC0A6227A58FCC0081B599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D8BC0A6427A590210081B599 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D8EB445327A830B8001A74C7 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		D8EB445627A9672F001A74C7 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		D8EB445827A9698F001A74C7 /* ConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationProvider.swift; sourceTree = "<group>"; };
+		D8EB445B27A974E5001A74C7 /* ScaledButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledButtonStyle.swift; sourceTree = "<group>"; };
 		D8EC295427A690090021BD77 /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 		D8EC295627A697750021BD77 /* CryptoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListViewModel.swift; sourceTree = "<group>"; };
 		D8EC295927A6A6690021BD77 /* CryptoListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListRowView.swift; sourceTree = "<group>"; };
@@ -85,6 +90,7 @@
 		D85F9F1A27A594DF002733AD /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D8EB445727A9695D001A74C7 /* ConfigurationProvider */,
 				D85F9F1F27A5995E002733AD /* Crypto */,
 				D85F9F1B27A59508002733AD /* BaseNetworkClient.swift */,
 				D85F9F1D27A5984D002733AD /* WebError.swift */,
@@ -112,6 +118,7 @@
 		D85F9F2527A68B26002733AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D8EB445A27A974CB001A74C7 /* Styles */,
 				D8EC295827A6A6570021BD77 /* Components */,
 				D85F9F2627A68B35002733AD /* CryptoListView */,
 			);
@@ -131,6 +138,7 @@
 		D893D24827A43F4E0005B8D9 = {
 			isa = PBXGroup;
 			children = (
+				D8EB445527A966FC001A74C7 /* Config */,
 				D893D25327A43F4E0005B8D9 /* CryptoList */,
 				D893D25227A43F4E0005B8D9 /* Products */,
 				819672A658A1705C556C000B /* Pods */,
@@ -195,6 +203,30 @@
 				D8BC0A6327A58FCC0081B599 /* Localizable.strings */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		D8EB445527A966FC001A74C7 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				D8EB445627A9672F001A74C7 /* Development.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		D8EB445727A9695D001A74C7 /* ConfigurationProvider */ = {
+			isa = PBXGroup;
+			children = (
+				D8EB445827A9698F001A74C7 /* ConfigurationProvider.swift */,
+			);
+			path = ConfigurationProvider;
+			sourceTree = "<group>";
+		};
+		D8EB445A27A974CB001A74C7 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				D8EB445B27A974E5001A74C7 /* ScaledButtonStyle.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		D8EC295327A68FEC0021BD77 /* ViewModelFactory */ = {
@@ -358,8 +390,10 @@
 				D85F9F2427A59B31002733AD /* GetAllCurrenciesResponse.swift in Sources */,
 				D8EC295727A697750021BD77 /* CryptoListViewModel.swift in Sources */,
 				D85F9F2127A5999C002733AD /* CryptoWebService.swift in Sources */,
+				D8EB445927A9698F001A74C7 /* ConfigurationProvider.swift in Sources */,
 				D8EC295527A690090021BD77 /* ViewModelFactory.swift in Sources */,
 				D85F9F1C27A59508002733AD /* BaseNetworkClient.swift in Sources */,
+				D8EB445C27A974E5001A74C7 /* ScaledButtonStyle.swift in Sources */,
 				D8EB445427A830B8001A74C7 /* TestView.swift in Sources */,
 				D8A430DF27A457A400C23C4E /* Assets.swift in Sources */,
 			);
@@ -382,6 +416,7 @@
 /* Begin XCBuildConfiguration section */
 		D893D25D27A43F500005B8D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8EB445627A9672F001A74C7 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;

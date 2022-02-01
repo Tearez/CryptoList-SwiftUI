@@ -16,14 +16,19 @@ final class ViewModelFactory: ObservableObject {
 		registerDependencies()
 	}
 
-	private func registerDependencies() {
-		dependencyContainer.register(CryptoWebServiceProtocol.self) { _ in
-			return CryptoWebService()
-		}
-		.inObjectScope(.container)
-	}
-
 	func buildCryptoListViewModel() -> CryptoListViewModel {
 		CryptoListViewModel(service: dependencyContainer.resolve(CryptoWebServiceProtocol.self)!)
+	}
+
+	private func registerDependencies() {
+		dependencyContainer.register(ConfigurationProviderProtocol.self) { _ in
+			return ConfigurationProvider()
+		}
+		.inObjectScope(.container)
+		dependencyContainer.register(CryptoWebServiceProtocol.self) { resolver in
+			let configurationProvider = resolver.resolve(ConfigurationProviderProtocol.self)!
+			return CryptoWebService(configurationProvider: configurationProvider)
+		}
+		.inObjectScope(.container)
 	}
 }

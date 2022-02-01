@@ -23,10 +23,9 @@ struct CryptoListView: View {
 				ScrollView(showsIndicators: false) {
 					LazyVStack(spacing: 8) {
 						ForEach(viewModel.cryptoCurrencies) { crypto in
-							CryptoListRowView(crypto: crypto)
-								.onTapGesture {
-									viewModel.didTapCrypto(with: crypto.id)
-								}
+							CryptoListRowView(crypto: crypto) {
+								viewModel.didTapCrypto(with: crypto.id)
+							}
 						}
 					}
 					.padding(.horizontal, 12)
