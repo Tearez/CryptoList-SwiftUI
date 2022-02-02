@@ -75,15 +75,16 @@ import SwiftUI
 	}
 }
 
+{{accessModifier}} extension UIColor {
+	var color: Color {
+		Color(self)
+	}
+}
+
 fileprivate extension UIColor {
 	convenience init?(asset: {{colorType}}) {
 		let bundle = {{param.bundle|default:"BundleToken.bundle"}}
 		self.init(named: asset.name, in: bundle, compatibleWith: nil)
-	}
-}
-{{accessModifier}} extension UIColor {
-	var color: Color {
-		Color(self)
 	}
 }
 {% endif %}{% if not param.bundle %}

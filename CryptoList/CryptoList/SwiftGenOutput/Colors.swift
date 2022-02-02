@@ -22,15 +22,16 @@ public final class ColorAsset {
 	}
 }
 
+public extension UIColor {
+	var color: Color {
+		Color(self)
+	}
+}
+
 fileprivate extension UIColor {
 	convenience init?(asset: ColorAsset) {
 		let bundle = BundleToken.bundle
 		self.init(named: asset.name, in: bundle, compatibleWith: nil)
-	}
-}
-public extension UIColor {
-	var color: Color {
-		Color(self)
 	}
 }
 
