@@ -7,31 +7,52 @@
 
 import SwiftUI
 
+struct MainMenuOptionView: View {
+	private let title: String
+	private let subtitle: String
+
+	init(title: String, subtitle: String) {
+		self.title = title
+		self.subtitle = subtitle
+	}
+
+	var body: some View {
+		HStack {
+			VStack(alignment: .leading) {
+				Text(title)
+					.font(.system(size: 24))
+					.foregroundColor(.black)
+				Text(subtitle)
+					.bold()
+					.font(.system(size: 12))
+					.foregroundColor(.gray)
+			}
+
+			Spacer()
+
+			Image(systemName: "chevron.forward")
+				.foregroundColor(.black)
+		}
+		.modifier(CardViewModifier())
+	}
+}
+
 struct MainMenuView: View {
 	@EnvironmentObject var viewModelFactory: ViewModelFactory
 
     var body: some View {
 		NavigationView {
-			Group {
+			VStack(spacing: 8) {
 				NavigationLink(destination: CryptoListView(viewModel: viewModelFactory.buildCryptoListViewModel()),
 							   label: {
-					HStack {
-						VStack {
-							Text("Coin Paprika")
-								.font(.system(size: 24))
-								.foregroundColor(.black)
-							Text("Not Authenticated")
-								.bold()
-								.font(.system(size: 12))
-								.foregroundColor(.gray)
-						}
-
-						Spacer()
-
-						Image(systemName: "chevron.forward")
-					}
+					MainMenuOptionView(title: "Coin Paprika", subtitle: "Not Authenticated")
 				})
-			}.navigationBarHidden(true)
+				NavigationLink(destination: SingInView(),
+							   label: {
+					MainMenuOptionView(title: "Coin Ranking", subtitle: "Authenticated")
+				})
+			}.padding(.horizontal, 8)
+			.navigationBarHidden(true)
 		}
     }
 }

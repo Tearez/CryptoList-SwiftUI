@@ -15,6 +15,8 @@
 		D8740E5B27BBDD4400DB5F26 /* CryptoFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8740E5A27BBDD4400DB5F26 /* CryptoFormatter.swift */; };
 		D8740E5F27BBE7C800DB5F26 /* CryptoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8740E5E27BBE7C800DB5F26 /* CryptoImageView.swift */; };
 		D8740E6227BBEC0600DB5F26 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8740E6127BBEC0600DB5F26 /* MainMenuView.swift */; };
+		D8740E6527BBFCDC00DB5F26 /* SingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8740E6427BBFCDC00DB5F26 /* SingInView.swift */; };
+		D8740E6827BC014300DB5F26 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8740E6727BC014300DB5F26 /* CardViewModifier.swift */; };
 		D893D25527A43F4E0005B8D9 /* CryptoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D893D25427A43F4E0005B8D9 /* CryptoListApp.swift */; };
 		D893D25727A43F4E0005B8D9 /* CryptoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D893D25627A43F4E0005B8D9 /* CryptoListView.swift */; };
 		D893D25927A43F500005B8D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D893D25827A43F500005B8D9 /* Assets.xcassets */; };
@@ -51,6 +53,8 @@
 		D8740E5A27BBDD4400DB5F26 /* CryptoFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoFormatter.swift; sourceTree = "<group>"; };
 		D8740E5E27BBE7C800DB5F26 /* CryptoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoImageView.swift; sourceTree = "<group>"; };
 		D8740E6127BBEC0600DB5F26 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		D8740E6427BBFCDC00DB5F26 /* SingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInView.swift; sourceTree = "<group>"; };
+		D8740E6727BC014300DB5F26 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
 		D893D25127A43F4E0005B8D9 /* CryptoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D893D25427A43F4E0005B8D9 /* CryptoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListApp.swift; sourceTree = "<group>"; };
 		D893D25627A43F4E0005B8D9 /* CryptoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListView.swift; sourceTree = "<group>"; };
@@ -143,11 +147,13 @@
 		D85F9F2527A68B26002733AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D8740E6027BBEBE300DB5F26 /* MainMenuView */,
+				D8740E6627BC010600DB5F26 /* Modifiers */,
 				D8EB445A27A974CB001A74C7 /* Styles */,
 				D8EC295827A6A6570021BD77 /* Components */,
 				D85F9F2627A68B35002733AD /* CryptoListView */,
 				D8EC216827BBAA3B00307B62 /* CryptoDetailsView */,
+				D8740E6027BBEBE300DB5F26 /* MainMenuView */,
+				D8740E6327BBFCB400DB5F26 /* SignInView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,6 +182,22 @@
 				D8740E6127BBEC0600DB5F26 /* MainMenuView.swift */,
 			);
 			path = MainMenuView;
+			sourceTree = "<group>";
+		};
+		D8740E6327BBFCB400DB5F26 /* SignInView */ = {
+			isa = PBXGroup;
+			children = (
+				D8740E6427BBFCDC00DB5F26 /* SingInView.swift */,
+			);
+			path = SignInView;
+			sourceTree = "<group>";
+		};
+		D8740E6627BC010600DB5F26 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				D8740E6727BC014300DB5F26 /* CardViewModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		D893D24827A43F4E0005B8D9 = {
@@ -513,7 +535,9 @@
 				D8EB446C27A99EBA001A74C7 /* GetAllCoinsResponse.swift in Sources */,
 				D893D25527A43F4E0005B8D9 /* CryptoListApp.swift in Sources */,
 				D8EC295A27A6A6690021BD77 /* CryptoListRowView.swift in Sources */,
+				D8740E6527BBFCDC00DB5F26 /* SingInView.swift in Sources */,
 				D85F9F1E27A5984D002733AD /* WebError.swift in Sources */,
+				D8740E6827BC014300DB5F26 /* CardViewModifier.swift in Sources */,
 				D85F9F2427A59B31002733AD /* GetAllCurrenciesResponse.swift in Sources */,
 				D8EC295727A697750021BD77 /* CryptoListViewModel.swift in Sources */,
 				D85F9F2127A5999C002733AD /* CoinpaprikaWebService.swift in Sources */,

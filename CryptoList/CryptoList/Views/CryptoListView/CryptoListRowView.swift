@@ -56,11 +56,7 @@ struct CryptoListRowView: View {
 				}
 				Spacer()
 				CryptoTypeView(type: crypto.type)
-			}
-			.padding(6)
-			.background(Colors.background.uiColor.color)
-			.cornerRadius(8)
-			.shadow(color: .gray, radius: 4, x: 0, y: 0)
+			}.modifier(CardViewModifier())
 		}).buttonStyle(ScaledButtonStyle())
 	}
 }
