@@ -10,10 +10,10 @@ import Combine
 
 protocol CryptoWebServiceProtocol {
 	func getAllCoins() -> AnyPublisher<[CryptoCurrencyModel], Error>
+	func getCurrency(with id: String) -> AnyPublisher<CryptoCurrencyDetails, Error>
 }
 
-final class CoinpaprikaWebService: CryptoWebServiceProtocol {
-	private let baseClient = BaseNetworkClient()
+final class CoinpaprikaWebService: BaseNetworkClient, CryptoWebServiceProtocol {
 	private let configurationProvider: ConfigurationProviderProtocol
 
 	init(configurationProvider: ConfigurationProviderProtocol) {
@@ -22,7 +22,7 @@ final class CoinpaprikaWebService: CryptoWebServiceProtocol {
 
 	func getAllCoins() -> AnyPublisher<[CryptoCurrencyModel], Error> {
 		let url = buildUrl(with: "/coins")
-		let request: AnyPublisher<[CryptoCurrency], Error> = baseClient.request(url: url, method: .get)
+		let request: AnyPublisher<[CryptoCurrency], Error> = request(url: url, method: .get)
 		return Publishers.Map(upstream: request) { response in
 			response.map {
 				CryptoCurrencyModel(id: $0.id,
@@ -32,6 +32,20 @@ final class CoinpaprikaWebService: CryptoWebServiceProtocol {
 									iconUrl: nil,
 									type: $0.type)
 			}
+		}.eraseToAnyPublisher()
+	}
+
+	func getCurrency(with id: String) -> AnyPublisher<CryptoCurrencyDetails, Error> {
+		let url = buildUrl(with: "/coins/\(id)")
+		let request: AnyPublisher<GetCurrencyByIdResponse, Error> = request(url: url, method: .get)
+		return Publishers.Map(upstream: request) { response in
+			CryptoCurrencyDetails(name: response.name,
+								  symbol: response.symbol,
+								  description: response.description,
+								  iconUrl: nil,
+								  marketCap: nil,
+								  price: nil,
+								  priceAt: nil)
 		}.eraseToAnyPublisher()
 	}
 

@@ -14,8 +14,8 @@ struct CryptoListView: View {
 	var body: some View {
 		NavigationView {
 			ZStack {
-				if viewModel.isNavigationLinkActive {
-					NavigationLink(destination: TestView(text: viewModel.selectedCrypto),
+				if viewModel.isNavigationLinkActive, let cryptoDetailsModel = viewModel.selectedCrypto {
+					NavigationLink(destination: CryptoDetailsView(crypto: cryptoDetailsModel),
 								   isActive: $viewModel.isNavigationLinkActive) {
 						EmptyView()
 					}.transition(.identity)

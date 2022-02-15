@@ -14,9 +14,9 @@ class CryptoListViewModel: ObservableObject {
 
 	@Published private(set) var cryptoCurrencies: [CryptoCurrencyModel] = []
 	@Published var isNavigationLinkActive: Bool = false
-	@Published private(set) var selectedCrypto: String = "" {
+	@Published private(set) var selectedCrypto: CryptoCurrencyDetails? = nil {
 		didSet {
-			isNavigationLinkActive = !selectedCrypto.isEmpty
+			isNavigationLinkActive = selectedCrypto != nil
 		}
 	}
 
@@ -25,7 +25,7 @@ class CryptoListViewModel: ObservableObject {
 	}
 
 	func resetView() {
-		selectedCrypto = ""
+		selectedCrypto = nil
 		cryptoCurrencies = []
 	}
 
@@ -41,6 +41,13 @@ class CryptoListViewModel: ObservableObject {
 	}
 
 	func didTapCrypto(with id: String) {
-		selectedCrypto = id
+		service
+			.getCurrency(with: id)
+			.receive(on: DispatchQueue.main)
+			.sink(receiveCompletion: { _ in },
+				  receiveValue: { [weak self] response in
+				self?.selectedCrypto = response
+			})
+			.store(in: &cancelables)
 	}
 }
