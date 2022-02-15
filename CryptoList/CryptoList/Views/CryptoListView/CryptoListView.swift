@@ -43,7 +43,7 @@ struct CryptoListView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		CryptoListView(viewModel: ViewModelFactory().buildCryptoListViewModel())
+		CryptoListView(viewModel: ViewModelFactory().buildCoinpaprikaCryptoListViewModel())
 			.environmentObject(ViewModelFactory())
 			.environment(\.colorScheme, .dark)
 	}

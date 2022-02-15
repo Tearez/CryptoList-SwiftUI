@@ -16,13 +16,37 @@ final class ViewModelFactory: ObservableObject {
 		registerDependencies()
 	}
 
-	func buildCryptoListViewModel() -> CryptoListViewModel {
-		CryptoListViewModel(service: dependencyContainer.resolve(CryptoWebServiceProtocol.self)!)
+	func buildCoinpaprikaCryptoListViewModel() -> CryptoListViewModel {
+		let childContainer = Container(parent: dependencyContainer)
+		childContainer.register(CryptoWebServiceProtocol.self) { resolver in
+			let configurationProvider = resolver.resolve(ConfigurationProviderProtocol.self)!
+			return CoinpaprikaWebService(configurationProvider: configurationProvider)
+		}
+		.inObjectScope(.transient)
+
+		return CryptoListViewModel(service: childContainer.resolve(CryptoWebServiceProtocol.self)!)
+	}
+
+	func buildCoinrankingCryptoListViewModel() -> CryptoListViewModel {
+		let childContainer = Container(parent: dependencyContainer)
+		childContainer.register(CryptoWebServiceProtocol.self) { resolver in
+			let configurationProvider = resolver.resolve(ConfigurationProviderProtocol.self)!
+			let storageProvider = resolver.resolve(StorageProviderProtocol.self)!
+			return CoinrankingWebService(configurationProvider: configurationProvider,
+										 storageProvider: storageProvider)
+		}
+		.inObjectScope(.transient)
+
+		return CryptoListViewModel(service: childContainer.resolve(CryptoWebServiceProtocol.self)!)
 	}
 
 	func buildCryptoDetailsViewModel(crypto: CryptoCurrencyDetails) -> CryptoDetailsViewModel {
 		CryptoDetailsViewModel(crypto: crypto,
 							   formatter: dependencyContainer.resolve(CryptoDetailsViewModel.CryptoDetailsFormatter.self)!)
+	}
+
+	func buildSignInViewModel() -> SignInViewModel {
+		SignInViewModel(localStorage: dependencyContainer.resolve(StorageProviderProtocol.self)!)
 	}
 
 	private func registerDependencies() {
@@ -31,15 +55,13 @@ final class ViewModelFactory: ObservableObject {
 		}
 		.inObjectScope(.container)
 
-		dependencyContainer.register(CryptoWebServiceProtocol.self) { resolver in
-			let configurationProvider = resolver.resolve(ConfigurationProviderProtocol.self)!
-			return CoinpaprikaWebService(configurationProvider: configurationProvider)
-		}
-		.inObjectScope(.transient)
-
 		dependencyContainer.register(CryptoDetailsViewModel.CryptoDetailsFormatter.self) { _ in
 			return CryptoFormatter()
 		}
 		.inObjectScope(.transient)
+
+		dependencyContainer.register(StorageProviderProtocol.self) { _ in
+			return LocalStorageProvider()
+		}.inObjectScope(.container)
 	}
 }

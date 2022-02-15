@@ -33,8 +33,9 @@ class CryptoListViewModel: ObservableObject {
 		service
 			.getAllCoins()
 			.receive(on: DispatchQueue.main)
-			.sink(receiveCompletion: { _ in },
-				  receiveValue: { [weak self] response in
+			.sink(receiveCompletion: { completion in
+				print(completion)
+			}, receiveValue: { [weak self] response in
 				self?.cryptoCurrencies = response
 			})
 			.store(in: &cancelables)
@@ -44,7 +45,10 @@ class CryptoListViewModel: ObservableObject {
 		service
 			.getCurrency(with: id)
 			.receive(on: DispatchQueue.main)
-			.sink(receiveCompletion: { _ in },
+			.sink(receiveCompletion: { completion in
+				print(completion)
+				
+			},
 				  receiveValue: { [weak self] response in
 				self?.selectedCrypto = response
 			})

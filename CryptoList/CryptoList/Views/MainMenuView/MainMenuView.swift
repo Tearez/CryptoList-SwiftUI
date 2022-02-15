@@ -43,11 +43,11 @@ struct MainMenuView: View {
     var body: some View {
 		NavigationView {
 			VStack(spacing: 8) {
-				NavigationLink(destination: CryptoListView(viewModel: viewModelFactory.buildCryptoListViewModel()),
+				NavigationLink(destination: CryptoListView(viewModel: viewModelFactory.buildCoinpaprikaCryptoListViewModel()),
 							   label: {
 					MainMenuOptionView(title: "Coin Paprika", subtitle: "Not Authenticated")
 				})
-				NavigationLink(destination: SingInView(),
+				NavigationLink(destination: SingInView(viewModel: viewModelFactory.buildSignInViewModel()),
 							   label: {
 					MainMenuOptionView(title: "Coin Ranking", subtitle: "Authenticated")
 				})

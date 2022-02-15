@@ -9,7 +9,8 @@ import Foundation
 
 protocol StorageProviderProtocol {
 	func resetStorage()
-	var authorizationToken: String { get set }
+	var authorizationToken: String? { get }
+	func setAuthorizationToken(_ newToken: String)
 }
 
 final class LocalStorageProvider: StorageProviderProtocol {
@@ -19,13 +20,14 @@ final class LocalStorageProvider: StorageProviderProtocol {
 
 	private let userDefaults = UserDefaults.standard
 
-	var authorizationToken: String {
+	var authorizationToken: String? {
 		get {
-			userDefaults.string(forKey: Keys.authorizationToken.rawValue) ?? ""
+			userDefaults.string(forKey: Keys.authorizationToken.rawValue)
 		}
-		set {
-			userDefaults.set(newValue, forKey: Keys.authorizationToken.rawValue)
-		}
+	}
+
+	func setAuthorizationToken(_ newToken: String) {
+		userDefaults.set(newToken, forKey: Keys.authorizationToken.rawValue)
 	}
 
 	func resetStorage() {

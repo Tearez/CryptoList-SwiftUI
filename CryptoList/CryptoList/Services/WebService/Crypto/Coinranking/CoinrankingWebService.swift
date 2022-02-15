@@ -24,19 +24,19 @@ final class CoinrankingWebService: BaseNetworkClient, CryptoWebServiceProtocol {
 																		method: .get,
 																		headers: headers)
 		return Publishers.Map(upstream: request) { response in
-			response.coins.map {
-				CryptoCurrencyModel(id: $0.uuid,
-									name: $0.name,
-									symbol: $0.symbol,
-									price: $0.price,
-									iconUrl: $0.iconUrl,
+			response.data.coins.map { coin in
+				CryptoCurrencyModel(id: coin.uuid,
+									name: coin.name,
+									symbol: coin.symbol,
+									price: coin.price,
+									iconUrl: coin.iconUrl,
 									type: nil)
 			}
 		}.eraseToAnyPublisher()
 	}
 
 	func getCurrency(with id: String) -> AnyPublisher<CryptoCurrencyDetails, Error> {
-		let url = buildUrl(with: "/coins")
+		let url = buildUrl(with: "/coin/\(id)")
 		let request: AnyPublisher<GetCoinByIdResponse, Error> = request(url: url,
 																		method: .get,
 																		headers: headers)
@@ -52,13 +52,13 @@ final class CoinrankingWebService: BaseNetworkClient, CryptoWebServiceProtocol {
 		}.eraseToAnyPublisher()
 	}
 
-	private var headers: HTTPHeaders {
-		let authorizationToken: String = storageProvider.authorizationToken
-		let header = HTTPHeader(name: "x-access-token", value: authorizationToken)
-		return HTTPHeaders([header])
+	private var headers: HTTPHeaders? {
+		return storageProvider.authorizationToken
+			.map { HTTPHeader(name: "x-access-token", value: $0) }
+			.map { HTTPHeaders([$0]) }
 	}
 
 	private func buildUrl(with path: String) -> String {
-		return configurationProvider.coinpaprikaBaseUrl + path
+		return configurationProvider.coinrankingBaseUrl + path
 	}
 }
