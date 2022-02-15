@@ -9,12 +9,12 @@ import SwiftUI
 
 struct CryptoDetailsView: View {
 	let viewModel: CryptoDetailsViewModel
-
+	
 	var body: some View {
 		VStack {
 			HStack(spacing: 8) {
 				CryptoImageView(url: viewModel.cryptoIconUrl, width: 96, height: 96)
-
+				
 				VStack(alignment: .leading) {
 					Text(viewModel.cryptoName)
 						.bold()
@@ -28,18 +28,18 @@ struct CryptoDetailsView: View {
 			}
 			.padding(.horizontal)
 			.padding(.bottom, 16)
-
+			
 			HStack {
 				VStack(alignment: .leading) {
 					Text(viewModel.cryptoPrice)
 					Text(viewModel.cryptoPriceAt)
 				}
 				.font(.system(size: 20))
-
+				
 				Spacer()
 			}
 			.padding(.horizontal)
-
+			
 			ScrollView {
 				Text(viewModel.cryptoDescription)
 					.lineLimit(nil)
@@ -48,7 +48,7 @@ struct CryptoDetailsView: View {
 					.padding(.horizontal, 16)
 			}
 			.frame(width: UIScreen.main.bounds.width, alignment: .leading)
-
+			
 			Spacer()
 		}
 		.navigationBarTitleDisplayMode(.inline)

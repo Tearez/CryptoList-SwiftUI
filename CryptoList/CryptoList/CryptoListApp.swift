@@ -13,7 +13,7 @@ struct CryptoListApp: App {
 
     var body: some Scene {
         WindowGroup {
-			CryptoListView(viewModel: viewModelFactory.buildCryptoListViewModel())
+			MainMenuView()
 				.environmentObject(viewModelFactory)
         }
     }
