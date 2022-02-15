@@ -21,7 +21,8 @@ final class ViewModelFactory: ObservableObject {
 	}
 
 	func buildCryptoDetailsViewModel(crypto: CryptoCurrencyDetails) -> CryptoDetailsViewModel {
-		CryptoDetailsViewModel(crypto: crypto)
+		CryptoDetailsViewModel(crypto: crypto,
+							   formatter: dependencyContainer.resolve(CryptoDetailsViewModel.CryptoDetailsFormatter.self)!)
 	}
 
 	private func registerDependencies() {
@@ -33,6 +34,11 @@ final class ViewModelFactory: ObservableObject {
 		dependencyContainer.register(CryptoWebServiceProtocol.self) { resolver in
 			let configurationProvider = resolver.resolve(ConfigurationProviderProtocol.self)!
 			return CoinpaprikaWebService(configurationProvider: configurationProvider)
+		}
+		.inObjectScope(.transient)
+
+		dependencyContainer.register(CryptoDetailsViewModel.CryptoDetailsFormatter.self) { _ in
+			return CryptoFormatter()
 		}
 		.inObjectScope(.transient)
 	}

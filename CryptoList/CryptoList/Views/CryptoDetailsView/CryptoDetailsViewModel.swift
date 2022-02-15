@@ -8,10 +8,15 @@
 import Foundation
 
 final class CryptoDetailsViewModel {
-	private let crypto: CryptoCurrencyDetails
+	typealias CryptoDetailsFormatter = EpochDateFormatterProtocol & PriceFormatterProtocol
 
-	init(crypto: CryptoCurrencyDetails) {
+	private let crypto: CryptoCurrencyDetails
+	private let formatter: CryptoDetailsFormatter
+
+	init(crypto: CryptoCurrencyDetails,
+		 formatter: CryptoDetailsFormatter) {
 		self.crypto = crypto
+		self.formatter = formatter
 	}
 
 	var cryptoName: String {
@@ -27,20 +32,17 @@ final class CryptoDetailsViewModel {
 	}
 
 	var cryptoPrice: String {
-		guard let price = crypto.price?.formatted(.currency(code: "USD")) else {
+		guard let price = crypto.price else {
 			return ""
 		}
-		return "Price: \(price)"
+		return "Price: \(formatter.formatPrice(price))"
 	}
 
 	var cryptoPriceAt: String {
-		let date: String? = crypto.priceAt
-			.map { Date(timeIntervalSince1970: $0) }
-			.map { DateFormatter().string(from: $0) }
-		guard let formatedDate = date else {
+		guard let date = crypto.priceAt else {
 			return ""
 		}
-		return "Price at: \(formatedDate)"
+		return "Price at: \(formatter.formatDateTime(for: date))"
 	}
 
 	var cryptoIconUrl: URL? {

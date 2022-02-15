@@ -47,11 +47,7 @@ struct CryptoListRowView: View {
 			action()
 		}, label: {
 			HStack(alignment: .center, spacing: 8) {
-				Image(uiImage: Assets.cryptolistLogo.image)
-					.resizable()
-					.scaledToFit()
-					.frame(width: 48, height: 48, alignment: .center)
-					.cornerRadius(24)
+				CryptoImageView(url: nil, width: 48, height: 48)
 				VStack(alignment: .leading, spacing: 4) {
 					Text(crypto.name)
 						.font(.system(.headline))

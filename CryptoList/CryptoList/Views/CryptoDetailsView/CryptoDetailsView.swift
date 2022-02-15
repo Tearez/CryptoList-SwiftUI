@@ -12,25 +12,8 @@ struct CryptoDetailsView: View {
 
 	var body: some View {
 		VStack {
-			HStack {
-				if let url = viewModel.cryptoIconUrl {
-					AsyncImage(url: url, content: { image in
-						image
-							.resizable()
-							.scaledToFit()
-							.frame(width: 96, height: 96, alignment: .center)
-					}, placeholder: {
-						Image(uiImage: Assets.cryptolistLogo.image)
-							.resizable()
-							.scaledToFit()
-							.frame(width: 96, height: 96, alignment: .center)
-					})
-				} else {
-					Image(uiImage: Assets.cryptolistLogo.image)
-						.resizable()
-						.scaledToFit()
-						.frame(width: 96, height: 96, alignment: .center)
-				}
+			HStack(spacing: 8) {
+				CryptoImageView(url: viewModel.cryptoIconUrl, width: 96, height: 96)
 
 				VStack(alignment: .leading) {
 					Text(viewModel.cryptoName)
@@ -80,9 +63,9 @@ struct CryptoDetailsView_Previews: PreviewProvider {
 										   description: "Desc",
 										   iconUrl: nil,
 										   marketCap: nil,
-										   price: nil,
-										   priceAt: nil)
-		CryptoDetailsView(viewModel: CryptoDetailsViewModel(crypto: crypto))
+										   price: 999.99,
+										   priceAt: 1640757181)
+		CryptoDetailsView(viewModel: ViewModelFactory().buildCryptoDetailsViewModel(crypto: crypto))
 	}
 }
 
