@@ -14,5 +14,5 @@ struct CryptoCurrencyDetails {
 	let iconUrl: String?
 	let marketCap: String?
 	let price: Decimal?
-	let priceAt: Int?
+	let priceAt: Double?
 }

@@ -8,18 +8,13 @@
 import SwiftUI
 
 struct CryptoDetailsView: View {
-
-	private let crypto: CryptoCurrencyDetails
-
-	init(crypto: CryptoCurrencyDetails) {
-		self.crypto = crypto
-	}
+	let viewModel: CryptoDetailsViewModel
 
 	var body: some View {
 		VStack {
 			HStack {
-				if let url = crypto.iconUrl {
-					AsyncImage(url: URL(string: url), content: { image in
+				if let url = viewModel.cryptoIconUrl {
+					AsyncImage(url: url, content: { image in
 						image
 							.resizable()
 							.scaledToFit()
@@ -38,10 +33,10 @@ struct CryptoDetailsView: View {
 				}
 
 				VStack(alignment: .leading) {
-					Text(crypto.name)
+					Text(viewModel.cryptoName)
 						.bold()
 						.font(.system(size: 44))
-					Text(crypto.symbol)
+					Text(viewModel.cryptoSymbol)
 						.bold()
 						.font(.system(size: 24))
 						.foregroundColor(.gray)
@@ -53,8 +48,8 @@ struct CryptoDetailsView: View {
 
 			HStack {
 				VStack(alignment: .leading) {
-					crypto.price.map { Text("Price:  \($0.description)") }
-					crypto.priceAt.map { Text("Price at:  \($0.description)") }
+					Text(viewModel.cryptoPrice)
+					Text(viewModel.cryptoPriceAt)
 				}
 				.font(.system(size: 20))
 
@@ -62,29 +57,32 @@ struct CryptoDetailsView: View {
 			}
 			.padding(.horizontal)
 
-			Text(crypto.description)
-				.lineLimit(nil)
-				.font(.system(size: 16))
-				.padding(.top, 16)
-				.padding(.horizontal, 16)
-				.frame(width: UIScreen.main.bounds.width, alignment: .leading)
+			ScrollView {
+				Text(viewModel.cryptoDescription)
+					.lineLimit(nil)
+					.font(.system(size: 16))
+					.padding(.top, 16)
+					.padding(.horizontal, 16)
+			}
+			.frame(width: UIScreen.main.bounds.width, alignment: .leading)
 
 			Spacer()
 		}
 		.navigationBarTitleDisplayMode(.inline)
-		.navigationTitle(Text(crypto.name))
+		.navigationTitle(Text(viewModel.cryptoName))
 	}
 }
 
 struct CryptoDetailsView_Previews: PreviewProvider {
 	static var previews: some View {
-		CryptoDetailsView(crypto: CryptoCurrencyDetails(name: "Bitcoin",
-											   symbol: "BTC",
-											   description: "Description",
-											   iconUrl: nil,
-											   marketCap: "999999999",
-											   price: 12.5,
-											   priceAt: 1640757180))
+		let crypto = CryptoCurrencyDetails(name: "Bitcoin",
+										   symbol: "BTC",
+										   description: "Desc",
+										   iconUrl: nil,
+										   marketCap: nil,
+										   price: nil,
+										   priceAt: nil)
+		CryptoDetailsView(viewModel: CryptoDetailsViewModel(crypto: crypto))
 	}
 }
 

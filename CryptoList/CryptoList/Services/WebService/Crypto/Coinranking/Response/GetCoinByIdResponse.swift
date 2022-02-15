@@ -21,6 +21,6 @@ struct GetCoinByIdResponseCoin: Decodable {
 	let description: String
 	let iconUrl: String
 	let price: Decimal
-	let priceAt: Int
+	let priceAt: Double
 	let marketCap: Decimal
 }

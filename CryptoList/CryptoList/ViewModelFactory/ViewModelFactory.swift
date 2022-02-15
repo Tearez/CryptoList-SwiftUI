@@ -20,6 +20,10 @@ final class ViewModelFactory: ObservableObject {
 		CryptoListViewModel(service: dependencyContainer.resolve(CryptoWebServiceProtocol.self)!)
 	}
 
+	func buildCryptoDetailsViewModel(crypto: CryptoCurrencyDetails) -> CryptoDetailsViewModel {
+		CryptoDetailsViewModel(crypto: crypto)
+	}
+
 	private func registerDependencies() {
 		dependencyContainer.register(ConfigurationProviderProtocol.self) { _ in
 			return ConfigurationProvider()

@@ -10,12 +10,13 @@ import Combine
 
 struct CryptoListView: View {
 	@StateObject var viewModel: CryptoListViewModel
+	@EnvironmentObject var viewModelFactory: ViewModelFactory
 
 	var body: some View {
 		NavigationView {
 			ZStack {
 				if viewModel.isNavigationLinkActive, let cryptoDetailsModel = viewModel.selectedCrypto {
-					NavigationLink(destination: CryptoDetailsView(crypto: cryptoDetailsModel),
+					NavigationLink(destination: CryptoDetailsView(viewModel: viewModelFactory.buildCryptoDetailsViewModel(crypto: cryptoDetailsModel)),
 								   isActive: $viewModel.isNavigationLinkActive) {
 						EmptyView()
 					}.transition(.identity)
@@ -45,6 +46,7 @@ struct CryptoListView: View {
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
 		CryptoListView(viewModel: ViewModelFactory().buildCryptoListViewModel())
+			.environmentObject(ViewModelFactory())
 			.environment(\.colorScheme, .dark)
 	}
 }
